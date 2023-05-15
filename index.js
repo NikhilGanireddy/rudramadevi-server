@@ -7,7 +7,7 @@ const cookieparser = require("cookie-parser");
 
 const User = require("./models/User");
 const app = express();
-
+const port = process.env.PORT || 4000;
 app.use(express.json());
 app.use(
   cors({
@@ -62,4 +62,4 @@ app.get("/profile", (req, res) => {
   } else res.json(null);
 });
 
-app.listen(4000);
+app.listen(port);
