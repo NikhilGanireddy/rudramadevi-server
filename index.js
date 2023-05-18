@@ -21,6 +21,9 @@ app.use(cookieparser());
 
 mongoose.connect(process.env.MONGOURL);
 const jwtsecret = "lkdsfnbwlkskjthwkvebtrwldlnmvnsldzgcnxlc";
+const photosMiddlewear = multer({
+    dest: "uploads/"
+});
 
 app.get("/test", (req, res) => {
   res.json("server is working");
@@ -67,10 +70,6 @@ app.get("/profile", (req, res) => {
 
 app.post("/logout", (req, res) => {
   res.cookie("token", "").json(true);
-});
-
-const photosMiddlewear = multer({
-  dest: "uploads/"
 });
 
 app.post("/upload", photosMiddlewear.array("photo", 1), (req, res) => {
