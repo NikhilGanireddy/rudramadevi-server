@@ -14,7 +14,7 @@ app.use(express.json());
 app.use(
   cors({
     credentials: true,
-    origin: ["http://localhost:5173", "https://rudramadevi.netlify.app"]
+    origin: "https://rudramadevi.netlify.app",
   })
 );
 app.use(cookieparser());
@@ -22,7 +22,7 @@ app.use(cookieparser());
 mongoose.connect(process.env.MONGOURL);
 const jwtsecret = "lkdsfnbwlkskjthwkvebtrwldlnmvnsldzgcnxlc";
 const photosMiddlewear = multer({
-    dest: "uploads/"
+  dest: "uploads/",
 });
 
 app.get("/test", (req, res) => {
@@ -43,7 +43,7 @@ app.post("/login", async (req, res) => {
           branch: userDoc.branch,
           year: userDoc.year,
           room: userDoc.room,
-          password: userDoc.password
+          password: userDoc.password,
         },
         jwtsecret,
         {},
