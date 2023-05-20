@@ -14,7 +14,7 @@ app.use(express.json());
 app.use(
   cors({
     credentials: true,
-    origin: "https://rudramadevi.netlify.app",
+    origin: ["https://rudramadevi.netlify.app", "http://localhost:5173"],
   })
 );
 app.use(cookieparser());
@@ -49,7 +49,7 @@ app.post("/login", async (req, res) => {
         {},
         (err, token) => {
           if (err) throw err;
-          else res.cookie("token", token).json(token);
+          else res.cookie("token", token).json(userDoc);
         }
       );
     }
